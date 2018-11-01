@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Involt</title>
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+	<script src="core/jquery/jquery-2.1.0.min.js"></script>
+	<script src="core/jquery/jquery.nouislider.min.js"></script>
+	<script src="core/jquery/jquery.knob.js"></script>
+	<script src="core/jquery/insQ.min.js"></script>
+	<script src="settings.js"></script>
+	<script src="core/bridge.js"></script>
+	<script src="core/framework.js"></script>
+	
+	
+	<link rel="stylesheet" type="text/css" href="css/framework.css">
+	<link rel="stylesheet" type="text/css" href="cssbianor.css">
+
+
+</head>
+
+<body>
+	
+	
+	
+ 		<!--<button type="button" onclick="leitura()">Click Me!</button>-->
+
+ 		<button type="button" onclick="leitura(tempojogo)">JOGAR</button>
+		<button type="button" onclick="gravar(tempogravacao)">gravar</button>
+		<div id="DADOS1"></div>
+		<div id="DADOS2"></div>
+		<div id="DADOS3"></div>
+		<div id="DADOS4"></div>
+		<div id="DADOS5"></div>
+		<div id="IMAGEM">
+			<img id="pedra" src="pedra.jpg"  >
+		</div>
+
+
+
+	
+
+</body>
+<script>
+
+var valor1;
+var valor2;
+var valor3;
+var valor4;
+var valor5;
+
+var valor1comparacao;
+var valor2comparacao;
+var valor3comparacao;
+var valor4comparacao;
+var valor5comparacao;
+
+var tempogravacao=1000;
+var tempojogo=1000;
+var tempocost=1000;
+var imagem = document.getElementById("pedra").innerHTML; 
+
+
+
+function leitura(){
+
+		if (tempojogo<=20000){
+
+ 				setTimeout( function(){
+				valor1comparacao=involt.pin.A[13];
+				valor2comparacao=involt.pin.A[12];
+				valor3comparacao=involt.pin.A[11];
+				valor4comparacao=involt.pin.A[10];
+				valor5comparacao=involt.pin.A[9];
+
+
+				if (valor1comparacao>400){
+
+					pedra.style.visibility="visible";
+				}else{
+					pedra.style.visibility="hidden";
+					}
+    
+
+
+
+
+				document.getElementById("DADOS1").innerHTML = valor1comparacao;
+				document.getElementById("DADOS2").innerHTML = valor2comparacao;
+				document.getElementById("DADOS3").innerHTML = valor3comparacao;
+				document.getElementById("DADOS4").innerHTML = valor4comparacao;
+				document.getElementById("DADOS5").innerHTML = valor5comparacao;
+
+				console.log(involt.pin.A[13]);
+				console.log(involt.pin.A[12]);
+				console.log(involt.pin.A[11]);
+				console.log(involt.pin.A[10]);
+				console.log(involt.pin.A[9]);
+
+				tempojogo=tempojogo+1000;
+				console.log(tempojogo);
+
+				leitura();
+
+},1000);
+}
+}
+
+function gravar(){
+
+if (tempogravacao<=20000){
+
+		setTimeout( function(){
+		valor1=involt.pin.A[13];
+		valor2=involt.pin.A[12];
+		valor3=involt.pin.A[11];
+		valor4=involt.pin.A[10];
+		valor5=involt.pin.A[9];
+
+		document.getElementById("DADOS1").innerHTML = valor1;
+		document.getElementById("DADOS2").innerHTML = valor2;
+		document.getElementById("DADOS3").innerHTML = valor3;
+		document.getElementById("DADOS4").innerHTML = valor4;
+		document.getElementById("DADOS5").innerHTML = valor5;
+
+		console.log(involt.pin.A[13]);
+		console.log(involt.pin.A[12]);
+		console.log(involt.pin.A[11]);
+		console.log(involt.pin.A[10]);
+		console.log(involt.pin.A[9]);
+
+		tempogravacao=tempogravacao+1000;
+		console.log(tempogravacao);
+
+		gravar();
+
+			
+
+},1000);
+
+}
+
+}
+
+
+
+</script>
+</html>
